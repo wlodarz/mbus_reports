@@ -19,7 +19,7 @@ class Reckoning:
         self.mbus_device_name = '/dev/ttyUSB0'
         self.xml_config_filename = config_filename
 
-    def get_measures(self):
+    def acquire_measures(self):
 
         if self.simulate == 0:
             mbusmaster = MBusMaster(self.mbus_device_name)
@@ -42,8 +42,9 @@ class Reckoning:
                 xmlmbusresp = mbusmaster.request_secondary(device_id)
                 if xmlmbusresp == None:
                     print('cant read cw for ' + device_id)
-                    return
-                cw_count = xmlmbusresp.get_value()
+                    cw_count = 0.0
+                else:
+                    cw_count = xmlmbusresp.get_value()
             else:
                 cw_count = 1.231
 
@@ -52,8 +53,9 @@ class Reckoning:
                 xmlmbusresp = mbusmaster.request_secondary(device_id)
                 if xmlmbusresp == None:
                     print('cant read hw for ' + device_id)
-                    return
-                hw_count = xmlmbusresp.get_value()
+                    hw_count = 0.0
+                else:
+                    hw_count = xmlmbusresp.get_value()
             else:
                 hw_count = 1.232
 
@@ -62,12 +64,16 @@ class Reckoning:
                 xmlmbusresp = mbusmaster.request_secondary(device_id)
                 if xmlmbusresp == None:
                     print('cant read co for ' + device_id)
-                    return
-                co_count = xmlmbusresp.get_value()
+                    co_count = 0.0
+                else:
+                    co_count = xmlmbusresp.get_value()
             else:
                 co_count = 1.233
 
             self.current_data.append({'flatno' : flat_no, 'cw_count' : cw_count, 'hw_count' : hw_count, 'co_count' : co_count})
+
+    def get_measures(self):
+        return self.current_data
 
     def generate_report(self):
         report = Report([self.day, self.month, self.year])
