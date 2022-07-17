@@ -17,11 +17,11 @@ class MBusMaster:
 
     def request_secondary(self, secondary_address):
         self.mbus.select_secondary_address(secondary_address)
-        return self.request(default_short_address)
+        return self.request(self.default_short_address)
 
     def request(self, address):
         retok = 0
-        for retry in range(1, retries):
+        for retry in range(1, self.retries):
             self.mbus.send_request_frame(address)
             reply = self.mbus.recv_frame()
             if reply != None:
@@ -29,18 +29,18 @@ class MBusMaster:
                 break
             time.sleep(10.0)
 
-        if debug:
-            print("reply =", reply)
+        # if debug:
+        #    print("reply =", reply)
 
         if retok == 0:
             return None
 
         reply_data = self.mbus.frame_data_parse(reply)
-        if debug:
-            print("reply_data =", reply_data)
+        # if debug:
+        #     print("reply_data =", reply_data)
 
         xml_buff = self.mbus.frame_data_xml(reply_data)
-        print("xml_buff =", xml_buff)
+        # print("xml_buff =", xml_buff)
 
         self.mbus.frame_data_free(reply_data)
 
