@@ -23,7 +23,8 @@ class XmlConfig:
                 co_meter_id = flat.find('CoMeterId')
                 if co_meter_id == None:
                     pass
-                self.config[id] = {'hw_meter_id' : int(hw_meter_id.text), 'cw_meter_id' : int(cw_meter_id.text), 'co_meter_id' : int(co_meter_id.text)}
+                # self.config[id] = {'hw_meter_id' : int(hw_meter_id.text), 'cw_meter_id' : int(cw_meter_id.text), 'co_meter_id' : int(co_meter_id.text)}
+                self.config[id] = {'hw_meter_id' : hw_meter_id.text, 'cw_meter_id' : cw_meter_id.text, 'co_meter_id' : co_meter_id.text}
 
 
     # should read config XML
