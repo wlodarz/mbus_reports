@@ -3,78 +3,78 @@
     <Flat>
 	<Id>1</Id>
 	<Floor>1</Floor>
-        <HwMeterId>21710080</HwMeterId>
-	<CwMeterId>21710090</CwMeterId>
-	<CoMeterId>02407178</CoMeterId>
+        <HwMeterId>21710080B4090107</HwMeterId>
+	<CwMeterId>21710090B4090107</CwMeterId>
+	<CoMeterId>02407178B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>2</Id>
 	<Floor>1</Floor>
-        <HwMeterId>21710096</HwMeterId>
-	<CwMeterId>21710089</CwMeterId>
-	<CoMeterId>02290838</CoMeterId>
+        <HwMeterId>21710096B4090107</HwMeterId>
+	<CwMeterId>21710089B4090107</CwMeterId>
+	<CoMeterId>02290838B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>3</Id>
 	<Floor>1</Floor>
-        <HwMeterId>21710081</HwMeterId>
-	<CwMeterId>21710095</CwMeterId>
-	<CoMeterId>02303556</CoMeterId>
+        <HwMeterId>21710081B4090107</HwMeterId>
+	<CwMeterId>21710095B4090107</CwMeterId>
+	<CoMeterId>02303556B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>4</Id>
 	<Floor>1</Floor>
-        <HwMeterId>21710098</HwMeterId>
-	<CwMeterId>21709986</CwMeterId>
-	<CoMeterId>02407172</CoMeterId>
+        <HwMeterId>21710098B4090107</HwMeterId>
+	<CwMeterId>21709986B4090107</CwMeterId>
+	<CoMeterId>02407172B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>5</Id>
 	<Floor>2</Floor>
-        <HwMeterId>21710085</HwMeterId>
-	<CwMeterId>21710097</CwMeterId>
-	<CoMeterId>02407441</CoMeterId>
+        <HwMeterId>21710085B4090107</HwMeterId>
+	<CwMeterId>21710097B4090107</CwMeterId>
+	<CoMeterId>02407441B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>6</Id>
 	<Floor>2</Floor>
-        <HwMeterId>21710099</HwMeterId>
-	<CwMeterId>21709987</CwMeterId>
-	<CoMeterId>02407558</CoMeterId>
+        <HwMeterId>21710099B4090107</HwMeterId>
+	<CwMeterId>21709987B4090107</CwMeterId>
+	<CoMeterId>02407558B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>7</Id>
 	<Floor>2</Floor>
-        <HwMeterId>21710082</HwMeterId>
-	<CwMeterId>21710094</CwMeterId>
-	<CoMeterId>02407537</CoMeterId>
+        <HwMeterId>21710082B4090107</HwMeterId>
+	<CwMeterId>21710094B4090107</CwMeterId>
+	<CoMeterId>02407537B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>8</Id>
 	<Floor>2</Floor>
-        <HwMeterId>21710083</HwMeterId>
-	<CwMeterId>21710091</CwMeterId>
-	<CoMeterId>02303626</CoMeterId>
+        <HwMeterId>21710083B4090107</HwMeterId>
+	<CwMeterId>21710091B4090107</CwMeterId>
+	<CoMeterId>02303626B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>9</Id>
 	<Floor>3</Floor>
-        <HwMeterId>21710086</HwMeterId>
-	<CwMeterId>21709985</CwMeterId>
-	<CoMeterId>02407184</CoMeterId>
+        <HwMeterId>21710086B4090107</HwMeterId>
+	<CwMeterId>21709985B4090107</CwMeterId>
+	<CoMeterId>02407184B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>10</Id>
 	<Floor>3</Floor>
-        <HwMeterId>21710084</HwMeterId>
-	<CwMeterId>21709988</CwMeterId>
-	<CoMeterId>02407171</CoMeterId>
+        <HwMeterId>21710084B4090107</HwMeterId>
+	<CwMeterId>21709988B4090107</CwMeterId>
+	<CoMeterId>02407171B409A104</CoMeterId>
     </Flat>
     <Flat>
 	<Id>11</Id>
 	<Floor>3</Floor>
-        <HwMeterId>21710087</HwMeterId>
-	<CwMeterId>21710093</CwMeterId>
-	<CoMeterId>02407439</CoMeterId>
+        <HwMeterId>21710087B4090107</HwMeterId>
+	<CwMeterId>21710093B4090107</CwMeterId>
+	<CoMeterId>02407439B409A104</CoMeterId>
     </Flat>
 </Building>

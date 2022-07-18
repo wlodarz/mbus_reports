@@ -14,10 +14,11 @@ class Reckoning:
         self.day = day
         self.month = month
         self.year = year
-        self.simulate = 1
+        self.simulate = 0
         self.retry_interval = 60
         self.mbus_device_name = '/dev/ttyUSB0'
         self.xml_config_filename = config_filename
+        self.debug = 1
 
     def acquire_measures(self):
 
@@ -30,42 +31,51 @@ class Reckoning:
 
         # request all measures
         for flat_no in self.meterlist.keys():
-            # print(flat_no)
+            if self.debug:
+                print('Flat ' + str(flat_no))
             flat_meters = self.meterlist[flat_no]
-
-            # xmlmbusresp = XmlMbusResp('tmp21710089B4090107.xml')
-            # device_id = xml.get_deviceid()
-            # value = xml.get_value()
 
             device_id = flat_meters['cw_meter_id']
             if self.simulate == 0:
-                xmlmbusresp = mbusmaster.request_secondary(device_id)
-                if xmlmbusresp == None:
+                xmlmbusresp_str = mbusmaster.request_secondary(device_id)
+                xmlmbusresp = XmlMbusResp()
+                if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read cw for ' + device_id)
                     cw_count = 0.0
                 else:
+                    if self.debug:
+                        print(xmlmbusresp_str)
+                    xmlmbusresp.parse_string(xmlmbusresp_str)
                     cw_count = xmlmbusresp.get_value()
             else:
                 cw_count = 1.231
 
             device_id = flat_meters['hw_meter_id']
             if self.simulate == 0:
-                xmlmbusresp = mbusmaster.request_secondary(device_id)
-                if xmlmbusresp == None:
+                xmlmbusresp_str = mbusmaster.request_secondary(device_id)
+                xmlmbusresp = XmlMbusResp()
+                if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read hw for ' + device_id)
                     hw_count = 0.0
                 else:
+                    if self.debug:
+                        print(xmlmbusresp_str)
+                    xmlmbusresp.parse_string(xmlmbusresp_str)
                     hw_count = xmlmbusresp.get_value()
             else:
                 hw_count = 1.232
 
             device_id = flat_meters['co_meter_id']
             if self.simulate == 0:
-                xmlmbusresp = mbusmaster.request_secondary(device_id)
-                if xmlmbusresp == None:
+                xmlmbusresp_str = mbusmaster.request_secondary(device_id)
+                xmlmbusresp = XmlMbusResp()
+                if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read co for ' + device_id)
                     co_count = 0.0
                 else:
+                    if self.debug:
+                        print(xmlmbusresp_str)
+                    xmlmbusresp.parse_string(xmlmbusresp_str)
                     co_count = xmlmbusresp.get_value()
             else:
                 co_count = 1.233

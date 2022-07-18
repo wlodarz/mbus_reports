@@ -6,10 +6,19 @@ class XmlMbusResp:
     device_id = ''
     device_value = ''
 
-    def __init__(self, filename):
+    def __init__(self):
+        pass
+
+    def parse_string(self, string_tree):
+        root = ET.fromstring(string_tree)
+        self.parse_tree(root)
+
+    def parse_file(self, filename):
         tree = ET.parse(filename)
         root = tree.getroot()
+        self.parse_tree(root)
 
+    def parse_tree(self, root):
         slaveinfo = root.find('SlaveInformation')
         if slaveinfo != None:
             idinfo = slaveinfo.find('Id')

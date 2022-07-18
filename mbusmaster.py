@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 from mbus.MBus import MBus
 import time
@@ -7,7 +7,6 @@ class MBusMaster:
 
     debug = True
     default_short_address = 253
-    # default_secondary_address = "21710096B4090107"
     default_secondary_address = ""
     retries = 8
 
@@ -15,24 +14,29 @@ class MBusMaster:
         self.mbus = MBus(device=device_name)
         self.mbus.connect()
 
+    def request_primary(self, address):
+        for retry in range(1, self.retries):
+            print('trying ' + str(retry) + ' addr ' + address)
+            try:
+                return self.request(address)
+            except:
+                time.sleep(3.0)
+        return None
+
     def request_secondary(self, secondary_address):
-        self.mbus.select_secondary_address(secondary_address)
-        return self.request(self.default_short_address)
+        for retry in range(1, self.retries):
+            print('trying ' + str(retry) + ' addr ' + secondary_address)
+            try:
+                self.mbus.select_secondary_address(secondary_address)
+                return self.request(self.default_short_address)
+            except:
+                time.sleep(3.0)
+        return None
 
     def request(self, address):
-        retok = 0
-        for retry in range(1, self.retries):
-            self.mbus.send_request_frame(address)
-            reply = self.mbus.recv_frame()
-            if reply != None:
-                retok = 1
-                break
-            time.sleep(10.0)
-
-        # if debug:
-        #    print("reply =", reply)
-
-        if retok == 0:
+        self.mbus.send_request_frame(address)
+        reply = self.mbus.recv_frame()
+        if reply == None:
             return None
 
         reply_data = self.mbus.frame_data_parse(reply)
