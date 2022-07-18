@@ -26,7 +26,7 @@ class Report:
         self.filename_str='odczyty_'+str(day)+'_'+str(month)+'_'+str(year)+'.pdf'
         self.title_str = 'Rozliczenie ' + str(month) + '.' + str(year)
         self.address1 = 'ul.Bukowa 24'
-        self.address2 = '41-100 Tychy'
+        self.address2 = '41-100, Tychy'
         self.headerstr='Stan licznikow na dzien : ' + str(day) + ' ' + self.months_str[month-1] + ' ' + str(year) + 'r.'
 
         styleSheet = getSampleStyleSheet()
