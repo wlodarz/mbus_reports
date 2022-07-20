@@ -18,7 +18,7 @@ class Reckoning:
         self.retry_interval = 60
         self.mbus_device_name = '/dev/ttyUSB0'
         self.xml_config_filename = config_filename
-        $elf.debug = 0
+        self.debug = 0
 
     def acquire_measures(self):
 
