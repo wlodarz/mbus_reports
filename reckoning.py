@@ -18,7 +18,7 @@ class Reckoning:
         self.retry_interval = 60
         self.mbus_device_name = '/dev/ttyUSB0'
         self.xml_config_filename = config_filename
-        self.debug = 1
+        $elf.debug = 0
 
     def acquire_measures(self):
 
@@ -92,9 +92,9 @@ class Reckoning:
 
     def send_report(self):
         mail = Mail()
-        ret = True
+        ret = False
         while ret == False:
-            ret = mail.send(report_filename)
+            ret = mail.send(self.report_filename)
             if ret == False:
                 print('retrying')
                 time.sleep(self.retry_interval)

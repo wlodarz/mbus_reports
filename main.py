@@ -12,6 +12,7 @@ def main():
     reckoning = Reckoning(config_filename, day, month, year)
     reckoning.acquire_measures()
     reckoning.generate_report()
+    reckoning.send_report()
 
 if __name__ == '__main__':
     main()
