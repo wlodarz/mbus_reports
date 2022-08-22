@@ -1,0 +1,14 @@
+CREATE TABLE odczyty (
+	id int NOT NULL AUTO_INCREMENT,
+	flatno int NOT NULL,
+	cw_count int NOT NULL,
+	hw_count int NOT NULL,
+	co_count int NOT NULL,
+	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id)
+);
+create user 'mbus'@'localhost' identified by 'mbus';
+create user 'odczyty'@'localhost' identified by 'odczyty';
+grant insert on odczyty to 'mbus'@'localhost';
+grant select on odczyty to 'odczyty'@'localhost';
+
