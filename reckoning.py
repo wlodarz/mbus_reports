@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 from reports_pdf import *
-from mail import *
+# from mail import *
+from mail_gapi import *
 from xmlmbusresp import *
 from xmlconfig import *
 from mbusmaster import *
@@ -91,18 +92,20 @@ class Reckoning:
         self.report_filename = report.generate(len(self.meterlist)+1)
 
     def send_report(self):
-        mail = Mail()
+        mail = GAPI_Mail()
         ret = False
+        date_string = str(self.month) + '.' + str(self.year)
         while ret == False:
-            ret = mail.send(self.report_filename)
+            ret = mail.send(date_string, self.report_filename)
             if ret == False:
                 print('retrying')
                 time.sleep(self.retry_interval)
 
 if __name__ == '__main__':
+    day = 1
     month = 4
     year = 2022
     config_filename = 'flats.xml'
-    reckoning = Reckoning(config_filename, month, year)
+    reckoning = Reckoning(config_filename, day, month, year)
     reckoning.get_measures()
 
