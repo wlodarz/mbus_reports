@@ -24,11 +24,6 @@ class GAPI_Mail:
     gmail_login = 'wlktest128@gmail.com'
     gmail_password = 'Alamakota123,'
 
-    # gmail_api_id = '43478262565-hbg4msl2n8qjtbcot60di2mrhgksl4jo.apps.googleusercontent.com'
-    # gmail_api_key = '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'
-    # gmail_api_scopes = ['https://mail.google.com/']
-    # gmail_api_email = '"Bukowa 24 BMS" wlktest128@gmail.com'
-
     email_text = """From %s\nTo: %s\nSubject: %s\n\n%s""" % (sent_from, ", ".join(to), subject, body)
 
     def __init__(self):
@@ -68,7 +63,6 @@ class GAPI_Mail:
             msg['To'] = ', '.join(self.to)
             msg['Bcc'] = ', '.join(self.bcc)
             msg['Body'] = self.body
-            # msg.preable = self.body
 
             ctype, encoding = mimetypes.guess_type(report_filename)
             if ctype is None or encoding is not None:
@@ -86,18 +80,8 @@ class GAPI_Mail:
 
             return service.users().messages().send(
                 userId="me",
-                # body=build_message(destination, obj, body, attachments)
                 body = {'raw' : raw}
             ).execute()
-
-            # self.send_message(service, "destination@domain.com", "This is a subject", 
-            #     "This is the body of the email", ["test.txt", "anyfile.png"])
-
-            # server_ssl = smtplib.SMTP_SSL(self.gmail_server, self.gmail_server_port)
-            # server_ssl.ehlo()
-            # server_ssl.login(self.gmail_login, self.gmail_password)
-            # server_ssl.send_message(msg)
-            # server_ssl.close()
 
             return True
 

@@ -22,7 +22,7 @@ class Mail:
     def __init__(self):
         pass
 
-    def send(self, report_filename):
+    def send(self, date_string, report_filename):
         try: 
             msg = EmailMessage()
             msg['Subject'] = self.subject
