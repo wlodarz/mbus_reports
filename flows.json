@@ -1,0 +1,266 @@
+[
+    {
+        "id": "d09c7f5c3a3d6136",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "907a7e1c217fa453",
+        "type": "group",
+        "z": "d09c7f5c3a3d6136",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "d12dec0c7316c757"
+        ],
+        "x": 34,
+        "y": 79,
+        "w": 152,
+        "h": 82
+    },
+    {
+        "id": "4c56d9e854b0d7f5",
+        "type": "ui_group",
+        "name": "Odczyty liczników",
+        "tab": "9dbae35b46412ac6",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9dbae35b46412ac6",
+        "type": "ui_tab",
+        "name": "BMS",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "547fc841f2e0fa41",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Bukowa 24 - BMS",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "42f0030501c5edfb",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "bukowa",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "74a11d2869795f49",
+        "type": "mysql",
+        "z": "d09c7f5c3a3d6136",
+        "mydb": "42f0030501c5edfb",
+        "name": "BukowaDB",
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "ceb88dc30d14eba4",
+                "05dfe633582f5434"
+            ]
+        ]
+    },
+    {
+        "id": "ceb88dc30d14eba4",
+        "type": "ui_table",
+        "z": "d09c7f5c3a3d6136",
+        "group": "4c56d9e854b0d7f5",
+        "name": "Odczyty",
+        "order": 2,
+        "width": "12",
+        "height": "6",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 760,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d12dec0c7316c757",
+        "type": "ui_date_picker",
+        "z": "d09c7f5c3a3d6136",
+        "g": "907a7e1c217fa453",
+        "name": "",
+        "label": "date",
+        "group": "4c56d9e854b0d7f5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "payload",
+        "topicType": "msg",
+        "className": "",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "8944f146f93e81d3"
+            ]
+        ]
+    },
+    {
+        "id": "0ef38cda25ae6dc8",
+        "type": "debug",
+        "z": "d09c7f5c3a3d6136",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8944f146f93e81d3",
+        "type": "function",
+        "z": "d09c7f5c3a3d6136",
+        "name": "function 1",
+        "func": "var date = new Date(parseInt(msg.payload));\nvar year = date.getFullYear();\nvar month = date.getMonth() + 1;\nvar day = date.getDate();\nvar selected_time = \"\"+year+\"-\"+month+\"-\"+day;\nmsg.topic = \"SELECT mieszkanie,zimna,ciepla,ogrzewanie FROM odczyty WHERE date(time) = \\\"\" + selected_time + \"\\\"\";\nmsg.payload = { \"year\": year, \"month\": month, \"day\": day };\nreturn msg;\n; return msg.payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "0ef38cda25ae6dc8",
+                "74a11d2869795f49"
+            ]
+        ]
+    },
+    {
+        "id": "05dfe633582f5434",
+        "type": "debug",
+        "z": "d09c7f5c3a3d6136",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 280,
+        "wires": []
+    }
+]
