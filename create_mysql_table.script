@@ -1,9 +1,9 @@
 CREATE TABLE odczyty (
 	id int NOT NULL AUTO_INCREMENT,
-	flatno int NOT NULL,
-	cw_count int NOT NULL,
-	hw_count int NOT NULL,
-	co_count int NOT NULL,
+	mieszkanie int NOT NULL,
+	zimna float NOT NULL,
+	ciepla float NOT NULL,
+	ogrzewanie float NOT NULL,
 	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 );

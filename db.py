@@ -14,7 +14,7 @@ class DB:
 
 	def insert(self, records):
 		c=self.db.cursor()
-		query = """INSERT INTO odczyty (flatno, co_count, cw_count, hw_count) VALUES (%s, %s, %s, %s)"""
+		query = """INSERT INTO odczyty (mieszkanie, ogrzewanie, zimna, ciepla) VALUES (%s, %s, %s, %s)"""
 		print(query)
 		for record in records:
 			print(record)

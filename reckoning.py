@@ -20,6 +20,7 @@ class Reckoning:
         self.mbus_device_name = '/dev/ttyUSB0'
         self.xml_config_filename = config_filename
         self.debug = 0
+        self.ratio = 1000
 
     def acquire_measures(self):
 
@@ -47,7 +48,7 @@ class Reckoning:
                     if self.debug:
                         print(xmlmbusresp_str)
                     xmlmbusresp.parse_string(xmlmbusresp_str)
-                    cw_count = xmlmbusresp.get_value()
+                    cw_count = float(xmlmbusresp.get_value()) / self.ratio
             else:
                 cw_count = 1.231
 
@@ -62,7 +63,7 @@ class Reckoning:
                     if self.debug:
                         print(xmlmbusresp_str)
                     xmlmbusresp.parse_string(xmlmbusresp_str)
-                    hw_count = xmlmbusresp.get_value()
+                    hw_count = float(xmlmbusresp.get_value()) / self.ratio
             else:
                 hw_count = 1.232
 
@@ -77,7 +78,7 @@ class Reckoning:
                     if self.debug:
                         print(xmlmbusresp_str)
                     xmlmbusresp.parse_string(xmlmbusresp_str)
-                    co_count = xmlmbusresp.get_value()
+                    co_count = float(xmlmbusresp.get_value()) / self.ratio
             else:
                 co_count = 1.233
 

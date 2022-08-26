@@ -14,7 +14,6 @@ def main():
     reckoning.acquire_measures()
     reckoning.generate_report()
     reckoning.send_report()
-    return
     data = reckoning.get_measures()
     db = DB('mbus', 'mbus', 'bukowa')
     db.connect()

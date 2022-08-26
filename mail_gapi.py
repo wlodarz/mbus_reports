@@ -14,15 +14,16 @@ from google.auth.transport.requests import Request
 
 class GAPI_Mail:
     sent_from = '"Bukowa BMS" <wlktest128@gmail.com>'
-    to = ['wlodarz@gmail.com']
-    bcc = ['wlk@poczta.fm']
+    # to = ['faktury@mq.energy']
+    to = ['wk@poczta.fm']
+    bcc = ['wlodarz@gmail.com']
     subject = 'Odczyt liczników za okres '
     body = 'This is a test'
 
-    gmail_server = 'smtp.gmail.com'
-    gmail_server_port = 465
-    gmail_login = 'wlktest128@gmail.com'
-    gmail_password = 'Alamakota123,'
+    # gmail_server = 'smtp.gmail.com'
+    # gmail_server_port = 465
+    # gmail_login = 'wlktest128@gmail.com'
+    # gmail_password = 'Alamakota123,'
 
     email_text = """From %s\nTo: %s\nSubject: %s\n\n%s""" % (sent_from, ", ".join(to), subject, body)
 
