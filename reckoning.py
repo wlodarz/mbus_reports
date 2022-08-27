@@ -23,6 +23,7 @@ class Reckoning:
         self.ratio = 1000
 
     def acquire_measures(self):
+        self.error_flag = 0
 
         if self.simulate == 0:
             mbusmaster = MBusMaster(self.mbus_device_name)
@@ -43,7 +44,8 @@ class Reckoning:
                 xmlmbusresp = XmlMbusResp()
                 if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read cw for ' + device_id)
-                    cw_count = 0.0
+                    cw_count = -1.0
+                    self.error_flag = 1
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -58,7 +60,8 @@ class Reckoning:
                 xmlmbusresp = XmlMbusResp()
                 if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read hw for ' + device_id)
-                    hw_count = 0.0
+                    hw_count = -1.0
+                    self.error_flag = 1
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -73,7 +76,8 @@ class Reckoning:
                 xmlmbusresp = XmlMbusResp()
                 if xmlmbusresp_str == None or xmlmbusresp == None:
                     print('cant read co for ' + device_id)
-                    co_count = 0.0
+                    co_count = -1.0
+                    self.error_flag = 1
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -85,7 +89,7 @@ class Reckoning:
             self.current_data.append({'flatno' : flat_no, 'cw_count' : cw_count, 'hw_count' : hw_count, 'co_count' : co_count})
 
     def get_measures(self):
-        return self.current_data
+        return self.current_data,self.error_flag
 
     def generate_report(self):
         report = Report([self.day, self.month, self.year])
@@ -95,7 +99,10 @@ class Reckoning:
     def send_report(self):
         mail = GAPI_Mail()
         ret = False
-        date_string = str(self.month) + '.' + str(self.year)
+        if self.error_flag == True:
+            date_string = 'BŁĄD czujnikow - ' + str(self.month) + '.' + str(self.year)
+        else:
+            date_string = str(self.month) + '.' + str(self.year)
         while ret == False:
             ret = mail.send(date_string, self.report_filename)
             if ret == False:
