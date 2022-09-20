@@ -56,3 +56,8 @@ class Mail:
             print(inst)
 
             return False
+
+if __name__=='__main__':
+    api = Mail()
+    api.send('07.2022', 'odczyty_18_7_2022.pdf')
+
