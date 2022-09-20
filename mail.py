@@ -7,9 +7,10 @@ import mimetypes
 
 class Mail:
     sent_from = 'wlktest128@gmail.com'
-    to = ['wlodarz@gmail.com']
+    # to = ['wlodarz@gmail.com']
+    to = ['faktury@mq.energy']
     bcc = ['wlk@poczta.fm']
-    subject = 'Test email'
+    subject = 'Odczyt liczników za okres '
     body = 'This is a test'
 
     gmail_server = 'smtp.gmail.com'
@@ -26,7 +27,7 @@ class Mail:
     def send(self, date_string, report_filename):
         try: 
             msg = EmailMessage()
-            msg['Subject'] = self.subject
+            msg['Subject'] = self.subject + date_string
             msg['From'] = self.sent_from
             msg['To'] = ', '.join(self.to)
             msg['Bcc'] = ', '.join(self.bcc)
