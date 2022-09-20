@@ -15,7 +15,8 @@ class Mail:
     gmail_server = 'smtp.gmail.com'
     gmail_server_port = 465
     gmail_login = 'wlktest128@gmail.com'
-    gmail_password = 'Alamakota123,'
+    # gmail_password = 'Alamakota123,' # - this is account pass
+    gmail_password = 'znxrvwanshxpfpta'
 
     email_text = """From %s\nTo: %s\nSubject: %s\n\n%s""" % (sent_from, ", ".join(to), subject, body)
 
@@ -59,5 +60,5 @@ class Mail:
 
 if __name__=='__main__':
     api = Mail()
-    api.send('07.2022', 'odczyty_18_7_2022.pdf')
+    api.send('07.2022', 'odczyty_9_9_2022.pdf')
 

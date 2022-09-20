@@ -18,6 +18,7 @@ def main():
     data,error_flag = reckoning.get_measures()
 
     if error_flag == True or month != month_tomorrow:
+    # if True:
         reckoning.generate_report()
         reckoning.send_report()
         print('sending')

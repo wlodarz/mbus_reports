@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from reports_pdf import *
-# from mail import *
+from mail import *
 from mail_gapi import *
 from xmlmbusresp import *
 from xmlconfig import *
@@ -97,7 +97,8 @@ class Reckoning:
         self.report_filename = report.generate(len(self.meterlist)+1)
 
     def send_report(self):
-        mail = GAPI_Mail()
+        # mail = GAPI_Mail()
+        mail = Mail()
         ret = False
         if self.error_flag == True:
             date_string = 'BŁĄD czujnikow - ' + str(self.month) + '.' + str(self.year)

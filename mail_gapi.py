@@ -95,5 +95,5 @@ class GAPI_Mail:
 
 if __name__=='__main__':
     api = GAPI_Mail()
-    api.send('07.2022', 'odczyty_18_7_2022.pdf')
+    api.send('07.2022', 'odczyty_9_9_2022.pdf')
 
