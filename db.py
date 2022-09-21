@@ -12,7 +12,7 @@ class DB:
 	def connect(self):
 		self.db = MySQLdb.connect('localhost', self.dbuser, self.dbpass, self.dbname)
 
-	def insert(self, records):
+	def insert_odczyt(self, records):
 		c=self.db.cursor()
 		query = """INSERT INTO odczyty (mieszkanie, ogrzewanie, zimna, ciepla) VALUES (%s, %s, %s, %s)"""
 		print(query)
@@ -22,6 +22,17 @@ class DB:
 			print(val)
 			c.execute(query, val)
 		self.db.commit()
+
+    def insert_alarms(self, errors):
+		c=self.db.cursor()
+		query = """INSERT INTO alarms (mieszkanie, ogrzewanie, zimna, ciepla) VALUES (%s, %s, %s, %s)"""
+		print(query)
+		for record in records:
+			print(record)
+			val = (record['flatno'], record['co_count'], record['cw_count'], record['hw_count'])
+			print(val)
+			# c.execute(query, val)
+		# self.db.commit()
 
 	def get_day(self, day):
 		pass

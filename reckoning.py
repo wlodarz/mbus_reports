@@ -21,6 +21,7 @@ class Reckoning:
         self.xml_config_filename = config_filename
         self.debug = 0
         self.ratio = 1000
+        self.alarms = []
 
     def acquire_measures(self):
         self.error_flag = 0
@@ -46,6 +47,7 @@ class Reckoning:
                     print('cant read cw for ' + device_id)
                     cw_count = -1.0
                     self.error_flag = 1
+                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'cw_meter'})
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -62,6 +64,7 @@ class Reckoning:
                     print('cant read hw for ' + device_id)
                     hw_count = -1.0
                     self.error_flag = 1
+                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'hw_meter'})
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -78,6 +81,7 @@ class Reckoning:
                     print('cant read co for ' + device_id)
                     co_count = -1.0
                     self.error_flag = 1
+                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'co_meter'})
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -89,7 +93,7 @@ class Reckoning:
             self.current_data.append({'flatno' : flat_no, 'cw_count' : cw_count, 'hw_count' : hw_count, 'co_count' : co_count})
 
     def get_measures(self):
-        return self.current_data,self.error_flag
+        return self.current_data,self.error_flag,self.alarms
 
     def generate_report(self):
         report = Report([self.day, self.month, self.year])

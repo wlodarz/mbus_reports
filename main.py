@@ -15,7 +15,7 @@ def main():
 
     reckoning = Reckoning(config_filename, day, month, year)
     reckoning.acquire_measures()
-    data,error_flag = reckoning.get_measures()
+    data,error_flag,alarms = reckoning.get_measures()
 
     if error_flag == True or month != month_tomorrow:
     # if True:
@@ -29,7 +29,9 @@ def main():
     # data = reckoning.get_measures()
     db = DB('mbus', 'mbus', 'bukowa')
     db.connect()
-    db.insert(data)    
+    db.insert_odczyt(data)
+    if error_flag == True:
+        db.insert_alarms(alarms)
     db.close()
 
 if __name__ == '__main__':
