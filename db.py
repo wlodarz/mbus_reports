@@ -23,16 +23,16 @@ class DB:
 			c.execute(query, val)
 		self.db.commit()
 
-    def insert_alarms(self, errors):
+	def update_alarms(self, alarms):
 		c=self.db.cursor()
-		query = """INSERT INTO alarms (mieszkanie, ogrzewanie, zimna, ciepla) VALUES (%s, %s, %s, %s)"""
+		query = """UPDATE alarmy SET ogrzewanie = %s, zimna = %s, ciepla = %s, time = NOW() WHERE mieszkanie = %s"""
 		print(query)
-		for record in records:
-			print(record)
-			val = (record['flatno'], record['co_count'], record['cw_count'], record['hw_count'])
+		for alarm in alarms:
+			print(alarms)
+			val = (alarm['co_flag'], alarm['cw_flag'], alarm['hw_flag'], alarm['flatno'])
 			print(val)
-			# c.execute(query, val)
-		# self.db.commit()
+			c.execute(query, val)
+		self.db.commit()
 
 	def get_day(self, day):
 		pass
@@ -45,6 +45,8 @@ if __name__ == '__main__':
 	db = DB('mbus', 'mbus', 'bukowa')
 	db.connect()
 	record = {'co_count' : 1, 'cw_count' : 2, 'hw_count' : 3, 'flatno' : 1}
-	db.insert(record)
+	db.insert_odczyt(record)
+	alarms = [{'flatno' : 1, 'co_flag' : False, 'cw_flag' : False, 'hw_flag' : False}]
+	db.insert_alarms(alarms)
 	db.close()
 

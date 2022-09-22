@@ -30,8 +30,7 @@ def main():
     db = DB('mbus', 'mbus', 'bukowa')
     db.connect()
     db.insert_odczyt(data)
-    if error_flag == True:
-        db.insert_alarms(alarms)
+    db.update_alarms(alarms)
     db.close()
 
 if __name__ == '__main__':

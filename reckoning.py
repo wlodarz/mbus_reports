@@ -25,6 +25,9 @@ class Reckoning:
 
     def acquire_measures(self):
         self.error_flag = 0
+        co_flag = False
+        cw_flag = False
+        hw_flag = False
 
         if self.simulate == 0:
             mbusmaster = MBusMaster(self.mbus_device_name)
@@ -47,7 +50,7 @@ class Reckoning:
                     print('cant read cw for ' + device_id)
                     cw_count = -1.0
                     self.error_flag = 1
-                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'cw_meter'})
+                    cw_flag = True	
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -64,7 +67,8 @@ class Reckoning:
                     print('cant read hw for ' + device_id)
                     hw_count = -1.0
                     self.error_flag = 1
-                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'hw_meter'})
+                    self.alarms.append({'flatno' : flat_no, 'counter' : 'hw_meter'})
+                    hw_flag = True	
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -81,7 +85,8 @@ class Reckoning:
                     print('cant read co for ' + device_id)
                     co_count = -1.0
                     self.error_flag = 1
-                    self.alarms.append({'flat_no' : flat_no, 'counter' : 'co_meter'})
+                    self.alarms.append({'flatno' : flat_no, 'counter' : 'co_meter'})
+                    co_flag = True	
                 else:
                     if self.debug:
                         print(xmlmbusresp_str)
@@ -91,6 +96,7 @@ class Reckoning:
                 co_count = 1.233
 
             self.current_data.append({'flatno' : flat_no, 'cw_count' : cw_count, 'hw_count' : hw_count, 'co_count' : co_count})
+            self.alarms.append({'flatno' : flat_no, 'cw_flag' : cw_flag, 'hw_flag' : hw_flag, 'co_flag' : co_flag})
 
     def get_measures(self):
         return self.current_data,self.error_flag,self.alarms
