@@ -17,6 +17,14 @@ CREATE TABLE alarmy (
 	PRIMARY KEY (mieszkanie)
 );
 
+CREATE TABLE offsety (
+	mieszkanie int NOT NULL,
+	zimna float,
+	ciepla float,
+	ogrzewanie float,
+	PRIMARY KEY (mieszkanie)
+);
+
 create user 'mbus'@'localhost' identified by 'mbus';
 create user 'odczyty'@'localhost' identified by 'odczyty';
 grant insert on odczyty to 'mbus'@'localhost';
@@ -24,3 +32,5 @@ grant select on odczyty to 'odczyty'@'localhost';
 grant insert on alarmy to 'mbus'@'localhost';
 grant update on alarmy to 'mbus'@'localhost';
 grant select on alarmy to 'mbus'@'localhost';
+grant select on offsety to 'mbus'@'localhost';
+grant select on offsety to 'odczyty'@'localhost';
